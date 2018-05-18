@@ -5,17 +5,29 @@ import static com.yahtzee.classes.InputOutput.*;
 import static com.yahtzee.Iyahtzee.*;
 import static com.yahtzee.classes.ScoreSheet.*;
 
-public class Round extends Yahtzee{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Round{
 	
-	protected static byte numOfRund;
-	private byte numOfRolling=MAX_Roll;
-	private static Die[] sellectionDices=new Die[NUM_DIE];
+	private byte numOfRund;
+	private boolean lastRound;
+	private List<Player> playersList=new ArrayList<>();
 	
 	public Round() {
-		if(numOfRund<13) {
-		setPlayer();
+		if(!isLastRound()) {
 		setScoreSheet();
-		numOfRund++;}
+		numOfRund++;
+		if(numOfRund==13)
+			lastRound=true;
+		
+		}
+	}
+	public boolean isLastRound() {
+		if(numOfRund<13) 
+			return lastRound;
+		else 
+			return false;
 	}
 	/*public void collectDice(Die[] dices) {
 		byte bInput=0;

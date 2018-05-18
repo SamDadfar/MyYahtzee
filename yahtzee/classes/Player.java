@@ -1,46 +1,49 @@
 package com.yahtzee.classes;
 
-import static com.yahtzee.Yahtzee.*;
 
-import com.yahtzee.*;
+import java.util.List;
 
-public class Player extends Yahtzee implements Iyahtzee{
+import com.yahtzee.Yahtzee;
+
+public class Player implements Yahtzee {
 	
-	private static Cup cup;
-	boolean fulled = false;
-	private Round[] playerRounds;
+	boolean tempArrayfull = false;
 	private String name;
 	private Die[] tempArrayDice=new Die[NUM_DIE];
-	
+	private ScoreSheet scoreSheet;
+	private byte numOfRolling;
+	private Cup cup=new Cup();
+
 	public Player() {
 		this(DEFAULT_NAME);
 	}
 
 	public Player(String name) {
 		this.name = name;
-		cup = new Cup();
-		playerRounds=new Round[MAX_ROUND];
+		//scoreSheet=new ScoreSheet();
+		cup.roll();
+		tempArrayDice=cup.getCup();
 	}
 	public String getName() {
 		return name;
 	}
-	public Cup getDiceArray() {
-		return cup;
+	public Die[] getDiceArray() {
+		return tempArrayDice;
 	}
-	public boolean isFull() {
-		return fulled;
+	public boolean isTempArrayFull() {
+		return tempArrayfull;
 	}
 	
-	@Override
-	public void pullDie(D) {
-		if (!isFull()) {
+	
+	public void pullDie(Die die) {
+		if (!isTempArrayFull()) {
 			for (Die d : tempArrayDice) {
 				if (d==null)
 					d = die;
 			}
 		}
 		else 
-			full=true;
+			tempArrayfull=true;
 	}
 	@Override
 	public byte threeOfKind() {
@@ -135,5 +138,17 @@ public class Player extends Yahtzee implements Iyahtzee{
 	public short sum() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void pullDie() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPlayerList(List<Player> playersList) {
+		// TODO Auto-generated method stub
+		
 	}
 }

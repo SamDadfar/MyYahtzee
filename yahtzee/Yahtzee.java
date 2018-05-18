@@ -1,25 +1,38 @@
 package com.yahtzee;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.Random;
 
-import com.yahtzee.classes.*;
+import com.yahtzee.classes.Cup;
+import com.yahtzee.classes.Player;
 
-public abstract class Yahtzee{
-	
-	
-	private static byte numOfPlayer;
-	ArrayList<Player> playersList=new ArrayList<>();
 
-	public abstract void setRound(byte numOfPlayer);
-	public abstract void setScoreSheet();
+public interface Yahtzee{
 	
-	public byte getNumOfPlayer() {
-		return numOfPlayer;
-	}
+		public static final byte MAX_Roll=3;
+		public static final byte NUM_DIE = 5;
+		public static final byte MAX_ROUND = 13;
+		public static String DEFAULT_NAME = "You";
+		public static final Random rollingValue=new Random();
+		
+		byte threeOfKind();
+		byte fourOfKind();
+		byte fullHouse();
+		byte smallStraight();
+		byte largeStraight();
+		byte chance();
+		byte yahtzee();
+		byte bonus();
+		byte ones();
+		byte twos();
+		byte threes();
+		byte fours();
+		byte fives();
+		byte sixes();
+		short totalScore();
+		short sum();
+		void pullDie();
+		void setPlayerList(List<Player> playersList);
 	
-	public void setNumOfPlayer(byte numOfPlayer) {
-		Yahtzee.numOfPlayer=numOfPlayer;
-	}
 
 }
