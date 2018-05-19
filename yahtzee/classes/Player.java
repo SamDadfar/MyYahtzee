@@ -1,15 +1,18 @@
 package com.yahtzee.classes;
 
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 import com.yahtzee.Yahtzee;
+import com.yahtzee.classes.*;
 
 public class Player implements Yahtzee {
 	
 	boolean tempArrayfull = false;
 	private String name;
-	private Die[] tempArrayDice=new Die[NUM_DIE];
+	private byte[] tempArrayDice=new byte[NUM_DIE];
 	private ScoreSheet scoreSheet;
 	private byte numOfRolling;
 	private Cup cup=new Cup();
@@ -22,12 +25,18 @@ public class Player implements Yahtzee {
 		this.name = name;
 		//scoreSheet=new ScoreSheet();
 		cup.roll();
-		tempArrayDice=cup.getCup();
+		tempArrayDice=cup.getDiceArray();
 	}
 	public String getName() {
 		return name;
 	}
-	public Die[] getDiceArray() {
+	public Cup getCup() {
+		return cup;
+	}
+	public void setCup(byte[] diceOfcup) {
+		this.cup.setCup(diceOfcup);
+	}
+	public byte[] getTempArrayDice() {
 		return tempArrayDice;
 	}
 	public boolean isTempArrayFull() {
@@ -35,10 +44,10 @@ public class Player implements Yahtzee {
 	}
 	
 	
-	public void pullDie(Die die) {
+	public void pullDie(byte die) {
 		if (!isTempArrayFull()) {
-			for (Die d : tempArrayDice) {
-				if (d==null)
+			for (byte d : tempArrayDice) {
+				if (d==0)
 					d = die;
 			}
 		}
@@ -49,7 +58,10 @@ public class Player implements Yahtzee {
 	public byte threeOfKind() {
 		return 0;
 	}
-
+	public byte[] sortCup(){
+		Arrays.sort(cup.getDiceArray());
+		return cup.getDiceArray();
+	}
 	@Override
 	public byte fourOfKind() {
 		// TODO Auto-generated method stub

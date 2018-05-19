@@ -16,11 +16,11 @@ public enum ItemOfTable {
 	BONUS(13),
 	SUM(14),
 	YAHTZEE(15),
-	TOTAL_SCORES(16),
-	
+	TOTAL_SCORES(16)
 	;
 	
 	private int code;
+	
 	private ItemOfTable(int code) {
 		this.code=code;
 	}

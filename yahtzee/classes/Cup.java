@@ -3,53 +3,38 @@ package com.yahtzee.classes;
 import static com.yahtzee.Yahtzee.*;
 
 public class Cup {
-	private Die[] diceArray = new Die[NUM_DIE];
-	
+	private byte[] diceArray = new byte[NUM_DIE];
+	//private byte[] tempArray;
+
 	public Cup() {
 		for (int i = 0; i < diceArray.length; i++) {
-			diceArray[i] = new Die();
+			diceArray[i] = new Die().getValue();
 		}
-	}
-	public void setCup(Die[] dice) {
-		this.diceArray=dice;
-	}
-	
-	public void roll() {
-		for (int i = 0; i < diceArray.length; i++) {
-			diceArray[i]=diceArray[i].roll();
-		}
-		
+		//tempArray=new byte[NUM_DIE];
 	}
 
-	public Die[] getDiceArray() {
+	public void setCup(byte[] diceArray) {
+		this.diceArray = diceArray;
+	}
+
+	public void roll() {
+		for (int i = 0; i < diceArray.length; i++) {
+			diceArray[i] = new Die().roll();
+		}
+
+	}
+
+	public byte[] getDiceArray() {
 		return diceArray;
 	}
 
 	public byte sumOfDice() {
 		int sum = 0;
-		for (Die d : diceArray) {
-			sum += d.getValue();
+		for (byte d : diceArray) {
+			sum += d;
 		}
 		return (byte) sum;
 	}
-	public class Die{
-		byte value;
-		boolean pulled;
-		public Die(){
-			value=(byte)((rollingValue.nextInt(6))+1);
-			}
-		public byte getValue() {
-			return value;
-		}
-		public Die roll() {
-			return new Die();
-		}
-		public boolean isPulled() {
-			return pulled;
-		}
-		public void pullDie(byte value) {
-			if(this.value==value)
-				pulled=true;
-		}
-	}
+
+	
 }

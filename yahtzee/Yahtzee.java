@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Random;
 
 import com.yahtzee.classes.Cup;
+import com.yahtzee.classes.Cup.Die;
 import com.yahtzee.classes.Player;
 
 
@@ -14,6 +15,7 @@ public interface Yahtzee{
 		public static final byte MAX_ROUND = 13;
 		public static String DEFAULT_NAME = "You";
 		public static final Random rollingValue=new Random();
+		Scanner scan=new Scanner(System.in);
 		
 		byte threeOfKind();
 		byte fourOfKind();
@@ -33,6 +35,5 @@ public interface Yahtzee{
 		short sum();
 		void pullDie();
 		void setPlayerList(List<Player> playersList);
-	
 
 }
