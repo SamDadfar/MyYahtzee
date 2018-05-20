@@ -27,12 +27,14 @@ public class Demo {
 		 */
 		Player player = new Player();
 		for (byte d : player.getCup().getDiceArray()) 
-			System.out.println(d);
-
+			System.out.print(d);
+		System.out.println("\n");
 			player.setCup(player.sortCup());
 			for (byte dd : player.getCup().getDiceArray())
-				System.out.println(dd);
-		
+				System.out.print(dd);
+		ScoreSheet s=new ScoreSheet();
+		for(ScoreSheet.Score ss: s.getScoreSheet())
+			System.out.println(ss.getName()+ss.getValue());
 	}
 
 }

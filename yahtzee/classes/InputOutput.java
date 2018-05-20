@@ -1,8 +1,6 @@
 package com.yahtzee.classes;
 
-import java.awt.im.InputContext;
 
-import com.yahtzee.classes.Cup.Die;
 import static com.yahtzee.Yahtzee.*;
 
 public class InputOutput {

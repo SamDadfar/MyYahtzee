@@ -17,14 +17,14 @@ public interface Yahtzee{
 		public static final Random rollingValue=new Random();
 		Scanner scan=new Scanner(System.in);
 		
-		byte threeOfKind();
-		byte fourOfKind();
-		byte fullHouse();
-		byte smallStraight();
-		byte largeStraight();
-		byte chance();
-		byte yahtzee();
-		byte bonus();
+		boolean isThreeOfKind();
+		boolean isFourOfKind();
+		boolean isFullHouse();
+		boolean isSmallStraight();
+		boolean isLargeStraight();
+		boolean isChance();
+		boolean isYahtzee();
+		boolean isBonus();
 		byte ones();
 		byte twos();
 		byte threes();
@@ -35,5 +35,5 @@ public interface Yahtzee{
 		short sum();
 		void pullDie();
 		void setPlayerList(List<Player> playersList);
-
+		short getScore();
 }

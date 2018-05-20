@@ -1,6 +1,6 @@
 package com.yahtzee.classes;
 
-import static com.yahtzee.Yahtzee.rollingValue;
+import static com.yahtzee.Yahtzee.random;
 
 
 public class Die {
@@ -8,7 +8,7 @@ public class Die {
 	private boolean pulled;
 
 	public Die() {
-		value = (byte) ((rollingValue.nextInt(6)) + 1);
+		value = (byte) ((random.nextInt(6)) + 1);
 	}
 
 	public byte getValue() {

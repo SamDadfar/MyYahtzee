@@ -1,51 +1,41 @@
 package com.yahtzee.classes;
+
 import static com.yahtzee.Yahtzee.*;
-
-
+import com.yahtzee.ItemOfTable;
 public class ScoreSheet {
 
 	public static final byte YAHTZEE = 50;
 	private short totalScore;
-	public static Score lScores[] = new Score[lowerArray.length];
-	public static Score uScores[] = new Score[upperArray.length];
-	private static Upper upper;
-	private static Lower lower;
-	public static byte counter=0;
-	
+	private Score[] scoreSheet=new Score[16];
+	// public static byte counter=0;
+
 	public ScoreSheet() {
-		upper=new Upper();
-		lower=new Lower();
+		for(int i=0;i<scoreSheet.length;i++)
+			scoreSheet[i]=new Score();
+		for(int i=0;i<scoreSheet.length;i++) {
+			scoreSheet[i].name=ItemOfTable.values()[i].name().toString();
+		}
+	}
+	public Score[] getScoreSheet() {
+		return scoreSheet;
 	}
 	public short getTotalScore() {
 		return totalScore;
 	}
-	
-	
-	private class Upper extends Score {
-		Upper() {
-			for (int i = 0; i < upperArray.length; i++) 
-				uScores[i] = new Score(upperArray[i]);	
-		}
-		
-	}
-	private class Lower extends Score{
-		Lower() {
-			for (int i = 0; i < lowerArray.length; i++) 
-				lScores[i] = new Score(lowerArray[i]);
-		}
-		
-	}
 
-	class Score {
+	public class Score {
 		String name;
 		byte value;
-		Score(){}
-		Score(String name) {
-			this.name = name;
-		}
+		boolean checked;
+
+		
 
 		public String getName() {
 			return name;
+		}
+
+		public boolean isChecked() {
+			return checked;
 		}
 
 		public byte getValue() {
@@ -53,9 +43,11 @@ public class ScoreSheet {
 		}
 
 		public void setValue(byte value) {
-			if(counter==0) {
-			this.value = value;
-			counter++;}
+			if (!isChecked()) {
+				this.value = value;
+				checked=true;
+			}
+			 
 		}
 
 	}

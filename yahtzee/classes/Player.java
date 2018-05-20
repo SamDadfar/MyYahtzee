@@ -1,7 +1,6 @@
 package com.yahtzee.classes;
 
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -54,54 +53,65 @@ public class Player implements Yahtzee {
 		else 
 			tempArrayfull=true;
 	}
-	@Override
-	public byte threeOfKind() {
-		return 0;
-	}
+	
 	public byte[] sortCup(){
 		Arrays.sort(cup.getDiceArray());
 		return cup.getDiceArray();
 	}
+
+
 	@Override
-	public byte fourOfKind() {
+	public void setPlayerList(List<Player> playersList) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	@Override
-	public byte fullHouse() {
+	public boolean isThreeOfKind() {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override
-	public byte smallStraight() {
+	public boolean isFourOfKind() {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override
-	public byte largeStraight() {
+	public boolean isFullHouse() {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override
-	public byte chance() {
+	public boolean isSmallStraight() {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override
-	public byte yahtzee() {
+	public boolean isLargeStraight() {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override
-	public byte bonus() {
+	public boolean isChance() {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
+	}
+
+	@Override
+	public boolean isYahtzee() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isBonus() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
@@ -159,8 +169,8 @@ public class Player implements Yahtzee {
 	}
 
 	@Override
-	public void setPlayerList(List<Player> playersList) {
+	public short getScore() {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 }
