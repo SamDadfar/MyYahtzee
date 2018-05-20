@@ -4,10 +4,9 @@ import static com.yahtzee.Yahtzee.*;
 import com.yahtzee.ItemOfTable;
 public class ScoreSheet {
 
-	public static final byte YAHTZEE = 50;
 	private short totalScore;
 	private Score[] scoreSheet=new Score[16];
-	// public static byte counter=0;
+	//private byte counter=0;
 
 	public ScoreSheet() {
 		for(int i=0;i<scoreSheet.length;i++)

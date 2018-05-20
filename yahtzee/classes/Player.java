@@ -1,6 +1,5 @@
 package com.yahtzee.classes;
 
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,63 +7,69 @@ import com.yahtzee.Yahtzee;
 import com.yahtzee.classes.*;
 
 public class Player implements Yahtzee {
-	
+
 	boolean tempArrayfull = false;
 	private String name;
-	private byte[] tempArrayDice=new byte[NUM_DIE];
+	private Cup playerCup;
 	private ScoreSheet scoreSheet;
-	private byte numOfRolling;
-	private Cup cup=new Cup();
-
+	private byte numOfRolling = 0;
+	private byte sum=0;
 	public Player() {
 		this(DEFAULT_NAME);
 	}
 
 	public Player(String name) {
 		this.name = name;
-		//scoreSheet=new ScoreSheet();
+		scoreSheet = new ScoreSheet();
 		cup.roll();
-		tempArrayDice=cup.getDiceArray();
-	}
+		playerCup = cup;	}
+
 	public String getName() {
 		return name;
 	}
+
 	public Cup getCup() {
 		return cup;
 	}
-	public void setCup(byte[] diceOfcup) {
-		this.cup.setCup(diceOfcup);
+
+	public void rollDice() {
+		if(numOfRolling<MAX_Roll) {
+			for(Die d:playerCup.getDiceArray()) {
+				if(!d.isPulled())
+					d.roll();
+			}
+			numOfRolling++;
+		}
 	}
-	public byte[] getTempArrayDice() {
-		return tempArrayDice;
+
+	public Die[] getTempArrayDice() {
+		return playerCup.getDiceArray();
 	}
+
 	public boolean isTempArrayFull() {
 		return tempArrayfull;
 	}
-	
-	
-	public void pullDie(byte die) {
-		if (!isTempArrayFull()) {
-			for (byte d : tempArrayDice) {
-				if (d==0)
-					d = die;
-			}
+	@Override
+	public void pullDie(byte dieValue, int index) {
+		for (int i = 0; i < playerCup.getDiceArray().length; i++) {
+			if (!playerCup.getDiceArray()[i].isPulled() && i == index && playerCup.getDiceArray()[i].getValue() == dieValue)
+				playerCup.getDiceArray()[i].pull();
 		}
-		else 
-			tempArrayfull=true;
+	}
+
+	public void pushDie(byte dieValue,int index) {
+		for(int i=0;i<playerCup.getDiceArray().length;i++) {
+			if (playerCup.getDiceArray()[i].isPulled() && i == index && playerCup.getDiceArray()[i].getValue() == dieValue)
+				playerCup.getDiceArray()[i].push();
+		}
 	}
 	
-	public byte[] sortCup(){
+	public Die[] sortCup() {
 		Arrays.sort(cup.getDiceArray());
 		return cup.getDiceArray();
 	}
 
-
-	@Override
-	public void setPlayerList(List<Player> playersList) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public boolean isThreeOfKind() {
@@ -116,38 +121,60 @@ public class Player implements Yahtzee {
 
 	@Override
 	public byte ones() {
-		// TODO Auto-generated method stub
-		return 0;
+		sum=0;
+		for(Die d:playerCup.getDiceArray())
+			if(d.getValue()==1)
+				sum+=d.getValue();
+		return sum;
 	}
 
 	@Override
 	public byte twos() {
-		// TODO Auto-generated method stub
-		return 0;
+		sum=0;
+		for(Die d:playerCup.getDiceArray())
+			if(d.getValue()==2)
+				sum+=d.getValue();
+		return sum;
 	}
 
 	@Override
 	public byte threes() {
-		// TODO Auto-generated method stub
-		return 0;
+		sum=0;
+		for(Die d:playerCup.getDiceArray())
+			if(d.getValue()==3)
+				sum+=d.getValue();
+		return sum;
+
 	}
 
 	@Override
 	public byte fours() {
-		// TODO Auto-generated method stub
-		return 0;
+		sum=0;
+		for(Die d:playerCup.getDiceArray())
+			if(d.getValue()==4)
+				sum+=d.getValue();
+		return sum;
+
 	}
 
 	@Override
 	public byte fives() {
-		// TODO Auto-generated method stub
-		return 0;
+		sum=0;
+		for(Die d:playerCup.getDiceArray())
+			if(d.getValue()==5)
+				sum+=d.getValue();
+		return sum;
+
 	}
 
 	@Override
 	public byte sixes() {
-		// TODO Auto-generated method stub
-		return 0;
+		sum=0;
+		for(Die d:playerCup.getDiceArray())
+			if(d.getValue()==6)
+				sum+=d.getValue();
+		return sum;
+
 	}
 
 	@Override
@@ -162,11 +189,7 @@ public class Player implements Yahtzee {
 		return 0;
 	}
 
-	@Override
-	public void pullDie() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public short getScore() {

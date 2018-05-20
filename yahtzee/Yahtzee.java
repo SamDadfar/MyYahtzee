@@ -4,19 +4,19 @@ import java.util.*;
 import java.util.Random;
 
 import com.yahtzee.classes.Cup;
-import com.yahtzee.classes.Cup.Die;
 import com.yahtzee.classes.Player;
 
 
 public interface Yahtzee{
 	
-		public static final byte MAX_Roll=3;
-		public static final byte NUM_DIE = 5;
-		public static final byte MAX_ROUND = 13;
-		public static String DEFAULT_NAME = "You";
-		public static final Random rollingValue=new Random();
+		byte MAX_Roll=3;
+		byte NUM_DIE = 5;
+		byte MAX_ROUND = 13;
+		String DEFAULT_NAME = "You";
+		Random random=new Random();
 		Scanner scan=new Scanner(System.in);
-		
+		 Cup cup=new Cup();
+
 		boolean isThreeOfKind();
 		boolean isFourOfKind();
 		boolean isFullHouse();
@@ -33,7 +33,6 @@ public interface Yahtzee{
 		byte sixes();
 		short totalScore();
 		short sum();
-		void pullDie();
-		void setPlayerList(List<Player> playersList);
+		void pullDie(byte dieValue, int index);
 		short getScore();
 }

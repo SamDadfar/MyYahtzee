@@ -25,6 +25,12 @@ public class InputOutput {
 		}
 		return 0;
 	}
+	public void showResult() {
+		System.out.print("Rolling Dice : \n");
+		for(Die d:Player.cup.getDiceArray())
+			System.out.print(d.getValue()+" ");
+		System.out.println("pulled Dice: ");
+	}
 
 	public void selectDie(Die die) {
 		pulledValue = die.getValue();

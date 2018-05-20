@@ -8,21 +8,22 @@ import static com.yahtzee.classes.ScoreSheet.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Round{
-	
+public class Game{
+	private boolean gameOver;
 	private byte numOfRund;
 	private boolean lastRound;
 	private List<Player> playersList=new ArrayList<>();
 	
-	public Round() {
-		if(!isLastRound()) {
-		setScoreSheet();
-		numOfRund++;
-		if(numOfRund==13)
-			lastRound=true;
-		
+	public Game(String[] playerName) {
+		if(!isGameOver()) {
+		for(int i=0;i<playerName.length;i++)
+			playersList.add(new Player(playerName[i]));
 		}
 	}
+	public boolean isGameOver() {
+		return gameOver;
+	}
+	public void 
 	public boolean isLastRound() {
 		if(numOfRund<13) 
 			return lastRound;

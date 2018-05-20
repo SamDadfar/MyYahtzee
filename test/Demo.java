@@ -3,6 +3,8 @@ package com.test;
 import com.yahtzee.classes.*;
 import static com.yahtzee.Yahtzee.*;
 
+import java.util.Arrays;
+
 public class Demo {
 	public static void main(String[] args) {
 		/*
@@ -25,7 +27,7 @@ public class Demo {
 		 * while(scan.hasNext()&input.getInputCounter()<5) { bInput=input.getInput();
 		 * System.out.println(bInput);}
 		 */
-		Player player = new Player();
+		/*Player player = new Player();
 		for (byte d : player.getCup().getDiceArray()) 
 			System.out.print(d);
 		System.out.println("\n");
@@ -34,7 +36,13 @@ public class Demo {
 				System.out.print(dd);
 		ScoreSheet s=new ScoreSheet();
 		for(ScoreSheet.Score ss: s.getScoreSheet())
-			System.out.println(ss.getName()+ss.getValue());
+			System.out.println(ss.getName()+ss.getValue());*/
+		Cup cup=new Cup();
+		for(Die d:cup.getDiceArray())
+			System.out.println(d.getValue());
+		cup.sortByValue();
+		for(Die b:cup.getDiceArray())
+			System.out.println(b.getValue());
 	}
 
 }

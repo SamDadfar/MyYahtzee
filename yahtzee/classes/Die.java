@@ -22,9 +22,10 @@ public class Die {
 	public boolean isPulled() {
 		return pulled;
 	}
-
-	public void pullDie(byte value) {
-		if (this.value == value)
+	public void push() {
+		pulled=false;
+	}
+	public void pull() {
 			pulled = true;
 	}
 }

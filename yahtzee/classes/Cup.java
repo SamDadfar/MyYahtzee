@@ -2,36 +2,49 @@ package com.yahtzee.classes;
 
 import static com.yahtzee.Yahtzee.*;
 
-public class Cup {
-	private byte[] diceArray = new byte[NUM_DIE];
-	//private byte[] tempArray;
+import java.util.Arrays;
+import java.util.Comparator;
 
+public class Cup {
+	private Die[] diceArray = new Die[NUM_DIE];
+	//private byte[] tempArray;
+	class SortByRoll implements Comparator<Die>{
+
+		@Override
+		public int compare(Die o1, Die o2) {
+			return o1.getValue()-o2.getValue();
+		}
+		
+	}
+	public void sortByValue() {
+		Arrays.sort(diceArray,new SortByRoll());
+	}
 	public Cup() {
 		for (int i = 0; i < diceArray.length; i++) {
-			diceArray[i] = new Die().getValue();
+			diceArray[i] = new Die();
 		}
 		//tempArray=new byte[NUM_DIE];
 	}
 
-	public void setCup(byte[] diceArray) {
+	public void setCup(Die[] diceArray) {
 		this.diceArray = diceArray;
 	}
 
 	public void roll() {
 		for (int i = 0; i < diceArray.length; i++) {
-			diceArray[i] = new Die().roll();
+			diceArray[i].roll();
 		}
 
 	}
 
-	public byte[] getDiceArray() {
+	public Die[] getDiceArray() {
 		return diceArray;
 	}
 
 	public byte sumOfDice() {
 		int sum = 0;
-		for (byte d : diceArray) {
-			sum += d;
+		for (Die d : diceArray) {
+			sum += d.getValue();
 		}
 		return (byte) sum;
 	}
