@@ -15,16 +15,15 @@ public interface Yahtzee{
 		String DEFAULT_NAME = "You";
 		Random random=new Random();
 		Scanner scan=new Scanner(System.in);
-		 Cup cup=new Cup();
-
-		boolean isThreeOfKind();
+		byte MAX_COUNTER_SCORE=12;
+		/*boolean isThreeOfKind();
 		boolean isFourOfKind();
 		boolean isFullHouse();
 		boolean isSmallStraight();
 		boolean isLargeStraight();
 		boolean isChance();
 		boolean isYahtzee();
-		boolean isBonus();
+		boolean isBonus();*/
 		byte ones();
 		byte twos();
 		byte threes();

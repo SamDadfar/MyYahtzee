@@ -14,7 +14,9 @@ public class Die {
 	public byte getValue() {
 		return value;
 	}
-
+	public void setValue(byte value) {
+		this.value=value;
+	}
 	public byte roll() {
 		return new Die().getValue();
 	}

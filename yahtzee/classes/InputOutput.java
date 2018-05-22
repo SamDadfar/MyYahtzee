@@ -3,6 +3,8 @@ package com.yahtzee.classes;
 
 import static com.yahtzee.Yahtzee.*;
 
+import com.yahtzee.ItemOfTable;
+
 public class InputOutput {
 
 	public byte input;
@@ -13,8 +15,13 @@ public class InputOutput {
 
 	}
 
-	public static void show() {
-		System.out.println("please enter a valid number according of menu");
+	public static void showInputMenu() {
+		String str="";
+		for(int i=0;i<ItemOfTable.values().length-3;i++) {
+			
+				str+=String.format("Press %1$-2d >> %2$-15s \n",ItemOfTable.values()[i].getCode(),ItemOfTable.values()[i].toString());
+		}
+				System.out.println(str);
 	}
 
 	public byte getInput() {

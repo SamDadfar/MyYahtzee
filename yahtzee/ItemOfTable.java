@@ -16,7 +16,7 @@ public enum ItemOfTable {
 	YAHTZEE(13,50),
 	BONUS(14,100),
 	SUM(15,0),
-	TOTAL_SCORES(16,375)
+	TOTAL_SCORES(16,375),
 	;
 	
 	private int code;
@@ -24,5 +24,11 @@ public enum ItemOfTable {
 	private ItemOfTable(int code,int maxValue) {
 		this.code=code;
 		this.maxValue=maxValue;
+	}
+	public int getCode() {
+		return code;
+	}
+	public int getMaxValue() {
+		return maxValue;
 	}
 }

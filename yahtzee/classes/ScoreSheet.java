@@ -1,22 +1,22 @@
 package com.yahtzee.classes;
 
 import static com.yahtzee.Yahtzee.*;
+
+
 import com.yahtzee.ItemOfTable;
 public class ScoreSheet {
 
 	private short totalScore;
-	private Score[] scoreSheet=new Score[16];
-	//private byte counter=0;
-
+	private Score[] scoreSheetItems=new Score[16];
 	public ScoreSheet() {
-		for(int i=0;i<scoreSheet.length;i++)
-			scoreSheet[i]=new Score();
-		for(int i=0;i<scoreSheet.length;i++) {
-			scoreSheet[i].name=ItemOfTable.values()[i].name().toString();
+		
+		for(int i=0;i<scoreSheetItems.length;i++)
+			scoreSheetItems[i]=new Score(ItemOfTable.values()[i].name().toString());
+		
 		}
-	}
-	public Score[] getScoreSheet() {
-		return scoreSheet;
+	
+	public Score[] getScoreSheetItems() {
+		return scoreSheetItems;
 	}
 	public short getTotalScore() {
 		return totalScore;
@@ -27,7 +27,9 @@ public class ScoreSheet {
 		byte value;
 		boolean checked;
 
-		
+		Score(String name){
+			this.name=name;
+		}
 
 		public String getName() {
 			return name;
@@ -47,6 +49,13 @@ public class ScoreSheet {
 				checked=true;
 			}
 			 
+		}
+		public short sumOfScores() {
+			short count=0;
+			for(int i=0;i<14;i++) {
+				count+=scoreSheetItems[i].getValue();
+			}
+			return count;
 		}
 
 	}

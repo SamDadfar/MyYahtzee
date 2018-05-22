@@ -37,12 +37,17 @@ public class Demo {
 		ScoreSheet s=new ScoreSheet();
 		for(ScoreSheet.Score ss: s.getScoreSheet())
 			System.out.println(ss.getName()+ss.getValue());*/
-		Cup cup=new Cup();
+		/*Cup cup=new Cup();
 		for(Die d:cup.getDiceArray())
 			System.out.println(d.getValue());
 		cup.sortByValue();
 		for(Die b:cup.getDiceArray())
-			System.out.println(b.getValue());
+			System.out.println(b.getValue());*/
+		InputOutput input=new InputOutput();
+		input.showInputMenu();
+		Player player=new Player("sam");
+		for(Die d:player.getTempArrayDice())
+			System.out.println(d.getValue());
 	}
 
 }
